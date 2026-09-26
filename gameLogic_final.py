@@ -24,6 +24,6 @@ class Game:
             return True
         else:
             return False
-        
+
     def get_lifes(self):
         return self.life
