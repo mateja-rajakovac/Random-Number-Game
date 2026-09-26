@@ -6,9 +6,12 @@ class GameGUI:
         self.mainwindow = window
         self.mainwindow.title("NumberGuessingGame")
         self.mainwindow.geometry("275x200")
+        self.mainwindow.resizable(False, False)
         self.mainwindow.config(bg="lightblue")
         self.backend = Game()
         self.entry_var = tk.StringVar()
+        self.app_icon = tk.PhotoImage(file="Random_Number.png")
+        self.mainwindow.iconphoto(True, self.app_icon)
 
         #-----------------ENTRY------------------
         self.choice = tk.Entry(self.mainwindow,
