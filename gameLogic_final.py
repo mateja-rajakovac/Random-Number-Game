@@ -2,7 +2,7 @@ import random
 
 class Game:
     def __init__(self):
-        self.number = random.randint(1, 10)
+        self.number = random.randint(1, 9)
         self.life = 4
 
     def true_false(self, choice):
@@ -11,7 +11,6 @@ class Game:
         try:
             number_choice = int(choice)
         except ValueError:
-            self.life -= 1
             return False
         if number_choice == self.number:
             return True
