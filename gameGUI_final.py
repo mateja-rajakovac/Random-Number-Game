@@ -66,14 +66,18 @@ class GameGUI:
         user_choice = self.choice.get()
         true_false_return = self.backend.true_false(user_choice)
 
-        if true_false_return == True:
+        if true_false_return == "CHOICE_WON":
             self.win_label.configure(text="YOU WIN!",
                                      font=("Arial", 20),
                                      fg="black",
                                      )
             self.enter_button.config(state="disabled")
-        elif true_false_return == False:
+        
+        if true_false_return == "FALSE_INPUT":
             self.update_ui()
+            self.update_ui_false()
+        
+        if true_false_return == "INVALID_INPUT":
             self.update_ui_invalid()
 
         if self.backend.game_over(user_choice) == True:
@@ -95,8 +99,8 @@ class GameGUI:
         self.mainwindow.after(3000, lambda: self.invalid_label.config(text=""))
 
     def update_ui_false(self):
-        self.invalid_label.config(text="False number... try again :)")
-        self.invalid_label.after(3000, lambda: self.invalid_label.config(text=""))
+        self.invalid_label.config(text="False number... try again")
+        self.mainwindow.after(3000, lambda: self.invalid_label.config(text=""))
         
 if __name__ == "__main__":
     root = tk.Tk()
